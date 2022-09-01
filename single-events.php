@@ -90,47 +90,27 @@
       <div class="col-12">
         <h3 class="mb-4"><?php echo 'Event Speakers'; ?></h3>
       </div>
-
-
-
-
-
       <!-- SPEAKERS -->
       <?php
           $prefix = '_cmb_';
-    
-    
-          $entries = get_post_meta(get_the_ID() , $prefix . 'metaboxjff_sections', true);
-          
-          
+          $entries = get_post_meta(get_the_ID() , $prefix . 'metaboxjff_sections', true);   
           foreach((array)$entries as $key => $entry) {
-          
-          
-              $img = $title = $content = '';
-              
+              $img = $title = $content = '';    
           if ( isset( $entry[ $prefix . 'test_title_2' ] ) ) 
-
-                  $title = esc_html( $entry[ $prefix . 'test_title_2' ] );
-                  
-                              
-          if ( isset( $entry[ $prefix .'test_content_2' ] ) )
-                      
+                  $title = esc_html( $entry[ $prefix . 'test_title_2' ] );                   
+          if ( isset( $entry[ $prefix .'test_content_2' ] ) )             
                   $content = $entry[ $prefix . 'test_content_2' ];
-
           if ( isset( $entry[$prefix . 'speaker_img_id'] ) ) {
               $img = wp_get_attachment_image( $entry[$prefix . 'speaker_img_id'], 'share-pick', null, array(
-                  'class' => 'mr-3 img-fluid',
-                  
+                  'class' => 'mr-3 img-fluid',               
               ) );
           } ?>
         <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
-          <div class="media">
-            
-            <?php echo $img; ?>
+          <div class="media"> 
+            <?php echo esc_html($img); ?>
             <div class="media-body">
             <h4 class="mt-0"><?php echo esc_html($title); ?></h4>
-            <?php echo $content; ?>
-              
+            <?php echo esc_attr($content); ?>      
             </div>
           </div>
         </div> 
@@ -160,34 +140,32 @@
       </div>
     </div>
     <div class="row justify-content-center">
-
-  <?php
-            $events = new WP_Query(array(
-              'post_type' => 'events',
-              'posts_per_page' => 3,
-            ));
-
-            while($events->have_posts()) : $events->the_post(); ?>
-  <!-- EVENT -->
-  <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card border-0 rounded-0 hover-shadow">
-      <div class="card-img position-relative">
-        <?php the_post_thumbnail('full', array('class' => 'card-img-top rounded-0')); ?>
-        <div class="card-date"><span><?php echo  get_post_meta( get_the_ID(), 'events-date', true ); ?></span><br><?php echo  get_post_meta( get_the_ID(), 'events-month', true ); ?></div>
+      <?php
+          $events = new WP_Query(array(
+          'post_type' => 'events',
+          'posts_per_page' => 3,
+          ));
+        while($events->have_posts()) : $events->the_post(); ?>
+      <!-- EVENT -->
+      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+        <div class="card border-0 rounded-0 hover-shadow">
+          <div class="card-img position-relative">
+            <?php the_post_thumbnail('full', array('class' => 'card-img-top rounded-0')); ?>
+            <div class="card-date"><span><?php echo  get_post_meta( get_the_ID(), 'events-date', true ); ?></span><br><?php echo  get_post_meta( get_the_ID(), 'events-month', true ); ?></div>
+          </div>
+          <div class="card-body">
+            <!-- LOCATION -->
+            <p><i class="ti-location-pin text-primary mr-2"></i><?php echo  get_post_meta( get_the_ID(), 'events-location', true ); ?></p>
+            <a href="<?php the_permalink(); ?>"><h4 class="card-title"><?php echo wp_trim_words(get_the_content(), 7, ''); ?></h4></a>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <!-- LOCATION -->
-        <p><i class="ti-location-pin text-primary mr-2"></i><?php echo  get_post_meta( get_the_ID(), 'events-location', true ); ?></p>
-        <a href="<?php the_permalink(); ?>"><h4 class="card-title"><?php echo wp_trim_words(get_the_content(), 7, ''); ?></h4></a>
-      </div>
+      <?php endwhile; ?>
+      <?php wp_reset_postdata(); ?>
+
+
+
     </div>
-  </div>
-  <?php endwhile; ?>
-  <?php wp_reset_postdata(); ?>
-
-
-
-</div>
   </div>
 </section>
 <!-- MORE EVENTS END -->

@@ -26,7 +26,7 @@
       </div>
       <div class="col-md-6">
         <h2><?php echo esc_html($content_title = atzi_get_option( 'scholarship-content-title' )); ?></h2>
-        <?php echo $descriptions = atzi_get_option( 'scholarship-descriptions' ); ?>
+        <?php echo $descriptions = atzi_get_option( 'scholarship-descriptions' ); // phpcs:ignore WordPres ?>
       </div>
     </div>
     <div class="row justify-content-center">

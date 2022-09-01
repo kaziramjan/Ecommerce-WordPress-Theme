@@ -3,28 +3,7 @@
 
 
   <!-- NEWSLETTER -->
-  <div class="newsletter">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9 ml-auto bg-primary py-5 newsletter-block">
-          <h3 class="text-white"><?php echo 'Subscribe Now'; ?></h3>
-          <form action="https://kaziramjan.us14.list-manage.com/subscribe/post?u=c44d422d5095a50eb1a6213e2&amp;id=f506acfab5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-              <div id="mc_embed_signup_scroll">
-
-                <div class="input-wrapper">
-                  <input type="email" value="" name="EMAIL" class="form-control border-0" id="mce-EMAIL" placeholder="Enter Your Email...">
-                  <button type="submit" value="send" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary"><?php echo 'Join'; ?></button>
-                </div>
-              </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="mc_embed_signup">
-    
-  </div>
+  <?php echo do_shortcode('[mc4wp_form id="456"]'); ?>
 
   <!-- FOOTER CONTENT -->
   <div class="footer bg-footer section border-bottom">
@@ -57,7 +36,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-7 text-sm-left text-center">
-          <p class="mb-0"><?php echo $copyright = atzi_get_option( 'copyright' ); ?></p>
+          <p class="mb-0"><?php echo $copyright = atzi_get_option( 'copyright' ); // phpcs:ignore WordPres?></p> 
         </div>
         <div class="col-sm-5 text-sm-right text-center">
           <ul class="list-inline">

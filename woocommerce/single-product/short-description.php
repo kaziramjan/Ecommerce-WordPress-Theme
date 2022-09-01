@@ -29,5 +29,5 @@ if ( ! $short_description ) {
 
 ?>
 <div class="woocommerce-product-details__short-description">
-	<?php echo esc_html($short_description); // WPCS: XSS ok. ?>
+	<?php echo asc_html($short_description); // WPCS: XSS ok. ?>
 </div>

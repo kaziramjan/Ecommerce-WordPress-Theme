@@ -16,7 +16,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+  exit; // Exit if accessed directly
 }
 
 get_header('archive'); ?>
@@ -77,7 +77,13 @@ get_header('archive'); ?>
                           <i class="ti-wallet text-primary icon-md mr-2"></i>
                           <div class="text-left">
                             <h6 class="mb-0"><?php echo 'FEE' ?></h6>
-                            <p class="mb-0"><?php global $product; echo 'From: ৳'.$product->get_price(); ?></p>
+                            <p class="mb-0">
+                              <?php 
+                                global $product; 
+                                echo 'From: '.get_woocommerce_currency_symbol(); 
+                                echo esc_html($product->get_price()); 
+                              ?>  
+                            </p>
                           </div>
                         </div>
                       </li>
@@ -96,29 +102,6 @@ get_header('archive'); ?>
                 <!-- COURSE DETAILS -->
                 <div class="row">
                     <?php the_content(); ?>
-                  <!-- TEACHER -->
-                  <div class="col-12">
-                    <h5 class="mb-3">Teacher</h5>
-                    <div class="d-flex justify-content-between align-items-center flex-wrap">
-                      <div class="media mb-2 mb-sm-0">
-                        <img class="mr-4 img-fluid" src="images/teacher.jpg" alt="Teacher">
-                        <div class="media-body">
-                          <h4 class="mt-0">Sam Anderson</h4>
-                          Photographer
-                        </div>
-                      </div>
-                      <div class="social-link">
-                        <h6 class="d-none d-sm-block">Social Link</h6>
-                        <ul class="list-inline">
-                          <li class="list-inline-item"><a class="d-inline-block text-light p-1" href="#"><i class="ti-facebook"></i></a></li>
-                          <li class="list-inline-item"><a class="d-inline-block text-light p-1" href="#"><i class="ti-twitter-alt"></i></a></li>
-                          <li class="list-inline-item"><a class="d-inline-block text-light p-1" href="#"><i class="ti-linkedin"></i></a></li>
-                          <li class="list-inline-item"><a class="d-inline-block text-light p-1" href="#"><i class="ti-instagram"></i></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="border-bottom border-primary mt-4"></div>
-                  </div>
                 </div>
               </div>
             </section>
